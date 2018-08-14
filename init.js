@@ -18,7 +18,8 @@ configSet('editor', {
     tabLength: 4,
     softWrap: false,
     tabType: 'soft',
-    preferredLineLength: 100
+    preferredLineLength: 100,
+    scrollPastEnd: true
 });
 
 //
@@ -552,6 +553,8 @@ usePackage('prettier-atom', {
         tabWidth: 4
     }
 });
+
+usePackage('language-cshtml');
 
 //
 //
