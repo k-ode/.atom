@@ -72,6 +72,20 @@ atom.commands.add('atom-text-editor', 'custom:insert-left-bracket', insertText('
 
 atom.commands.add('atom-text-editor', 'custom:insert-right-par', insertText(']'));
 
+const darkThemes = ['atom-dark-ui', 'atom-dark-syntax'];
+const lightThemes = ['atom-light-ui', 'atom-light-syntax'];
+
+atom.commands.add('atom-workspace', 'application:switch-to-light-theme', _e =>
+    configSet('core', {
+        themes: lightThemes
+    })
+);
+atom.commands.add('atom-workspace', 'application:switch-to-dark-theme', _e =>
+    configSet('core', {
+        themes: darkThemes
+    })
+);
+
 atom.commands.add(
     'atom-workspace atom-text-editor',
     'editor:emacs-move-subword-left',
@@ -95,6 +109,17 @@ atom.commands.add(
     'editor:emacs-select-subword-right',
     subwordNavigate((_, selection) => selection.selectToNextSubwordBoundary(), false)
 );
+
+atom.commands.add('atom-workspace', 'window:close-docks', _e => {
+    const bottomDock = atom.workspace.getBottomDock();
+    if (bottomDock.state.visible) {
+        bottomDock.toggle();
+    }
+    const rightDock = atom.workspace.getRightDock();
+    if (rightDock.state.visible) {
+        rightDock.toggle();
+    }
+});
 
 atom.keymaps.add(__filename, {
     'atom-workspace atom-text-editor:not([mini])': {
@@ -133,13 +158,19 @@ atom.keymaps.add(__filename, {
         'ctrl--': 'core:undo',
         'alt--': 'core:redo',
         'ctrl-c p p': 'application:reopen-project',
-        'ctrl-x i': 'symbols-view:toggle-file-symbols'
+        'ctrl-x i': 'symbols-view:toggle-file-symbols',
+        'ctrl-c q': 'window:close-docks'
     },
     'atom-workspace atom-text-editor.editor': {
         'ctrl-space': 'selection-mode:toggle'
     },
     'atom-workspace atom-text-editor.editor.selection-mode': {
         'ctrl-g': 'selection-mode:off'
+    },
+    '.tree-view': {
+        enter: 'tree-view:expand-item',
+        right: 'tree-view:expand-item',
+        left: 'tree-view:collapse-directory'
     }
 });
 
@@ -152,7 +183,7 @@ usePackage('last-cursor-position', {
             'ctrl-u ctrl-space': 'last-cursor-position:previous'
         }
     }
-})
+});
 
 usePackage('disable-keybindings', {
     config: {
@@ -336,7 +367,7 @@ usePackage('advanced-open-file', {
 });
 
 // Have to be manually installed for some reason.
-// usePackage('selection-mode');
+usePackage('selection-mode');
 
 usePackage('incsearch', {
     keymap: {
