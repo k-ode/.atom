@@ -605,11 +605,20 @@ usePackage('linter-eslint', {
     }
 });
 
+const prettierFormatModes = ['source js jsx', 'source ts', 'source tsx'];
+const prettierFormatModesKeymap = prettierFormatModes.reduce((result, mode) => {
+    return {
+        ...result,
+        [`atom-workspace atom-text-editor[data-grammar='${mode}']`]: {
+            'ctrl-c ctrl-f': 'prettier:format'
         }
-    }
-});
+    };
+}, {});
 
 usePackage('prettier-atom', {
+    keymap: {
+        ...prettierFormatModesKeymap
+    },
     config: {
         useEslint: true,
         formatOnSave: false,
