@@ -590,16 +590,21 @@ usePackage('ide-typescript-theia', {
 
 usePackage('language-babel');
 
-usePackage('linter', {
+usePackage('linter-eslint', {
     config: {
-        lintOnChange: false
+        scopes: [
+            'javascript',
+            'source.js',
+            'source.jsx',
+            'source.js.jsx',
+            'source.babel',
+            'source.js-semantic',
+            'source.ts',
+            'source.tsx'
+        ]
     }
 });
 
-usePackage('linter-eslint', {
-    keymap: {
-        "atom-workspace atom-text-editor[data-grammar='source js jsx']": {
-            'ctrl-c ctrl-f': 'linter-eslint:fix-file'
         }
     }
 });
