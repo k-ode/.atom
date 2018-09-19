@@ -442,7 +442,9 @@ usePackage('autocomplete-plus', {
         }
     },
     config: {
-        enableAutoActivation: false,
+        autoActivationDelay: 1000,
+        backspaceTriggersAutocomplete: true,
+        enableAutoActivation: true,
         confirmCompletion: 'tab and enter',
         enableAutoConfirmSingleSuggestion: false,
         enableExtendedUnicodeSupport: true
