@@ -149,6 +149,8 @@ atom.keymaps.add(__filename, {
         'ctrl-0': 'custom:insert-right-curly'
     },
     'atom-workspace': {
+        'ctrl-x p p': 'application:reopen-project',
+        'ctrl-x p shift-p': 'application:open-folder',
         'ctrl-x left': 'pane:split-left-and-copy-active-item',
         'ctrl-x right': 'pane:split-right-and-copy-active-item',
         'ctrl-x up': 'pane:split-up-and-copy-active-item',
@@ -477,13 +479,6 @@ usePackage('undo-tree');
 //     autoReload: true
 //   }
 // });
-usePackage('project-manager', {
-    keymap: {
-        'atom-workspace': {
-            'ctrl-c p e': 'edit-project',
-            'ctrl-c p s': 'save-project',
-            'ctrl-c p p': 'list-projects'
-        }
     }
 });
 
