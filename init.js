@@ -457,6 +457,25 @@ usePackage('github', {
     }
 });
 
+usePackage('git-plus', {
+    config: {
+        general: {
+            alwaysOpenDockWithResult: true,
+            splitPane: 'Right'
+        }
+    },
+    keymap: {
+        'atom-workspace': {
+            'ctrl-c g': 'git-plus:menu',
+            'ctrl-c ctrl-g': 'git-plus:run'
+        }
+    }
+});
+
+usePackage('git-rebase', {
+    enableKeys: true
+});
+
 // usePackage("jumpy", {
 //   keymap: {
 //     "atom-text-editor:not([mini])": {
