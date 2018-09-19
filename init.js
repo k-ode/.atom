@@ -526,12 +526,9 @@ usePackage('atomic-management');
 
 usePackage('atom-ide-ui', {
     keymap: {
-        'atom-workspace atom-text-editor.enable-atom-ide-find-references': {
-            'ctrl-c ctrl-f': 'code-format:format-code'
-        },
         'atom-workspace atom-text-editor.emacs-plus:not([mini])': {
-            'alt-,': 'signature-help:show',
-            'ctrl-alt-,': 'datatip:toggle',
+            'ctrl-c t': 'signature-help:show',
+            'ctrl-c ctrl-t': 'datatip:toggle',
             'alt-.': 'hyperclick:confirm-cursor'
             // "alt-n": "diagnostics:go-to-next-diagnostic",
             // "alt-p": "diagnostics:go-to-previous-diagnostic",
@@ -540,21 +537,47 @@ usePackage('atom-ide-ui', {
             // "ctrl-c r": "find-references:activate",
         },
         'atom-workspace': {
-            // "ctrl-c t": "outline-view:toggle",
-            // "ctrl-c l": "diagnostics:toggle-table"
+            'ctrl-x ctrl-i': 'outline-view:toggle',
+            'ctrl-c e': 'diagnostics:toggle-table'
         }
     },
     config: {
         'atom-ide-find-references': {
             defaultLocationForPane: 'right'
         },
-        use: {
-            'atom-ide-diagnostics-ui': 'never'
+        'atom-ide-terminal': {
+            preservedCommands: [
+                'command-palette:toggle',
+                'fb-interactive-smartlog:toggle',
+                'nuclide-quick-open:find-anything',
+                'atom-ide-terminal:add-escape-prefix',
+                'atom-ide-terminal:new-terminal',
+                'atom-ide-terminal:toggle-terminal-focus',
+                'pane:move-active-item-to-top-of-stack',
+                'pane:show-next-recently-used-item',
+                'window:focus-next-pane',
+                'window:focus-previous-pane',
+                'window:focus-pane-above',
+                'window:focus-pane-below',
+                'window:focus-pane-on-left',
+                'window:focus-pane-on-right',
+                'pane:split-down-and-copy-active-item',
+                'pane:split-left-and-copy-active-item',
+                'pane:split-right-and-copy-active-item',
+                'pane:split-up-and-copy-active-item'
+            ]
         }
     }
 });
+//
+// usePackage('ide-typescript', {
+//     config: {
+//         returnTypeInAutocomplete: 'right',
+//         diagnosticsEnabled: true
+//     }
+// });
 
-usePackage('ide-typescript', {
+usePackage('ide-typescript-theia', {
     config: {
         returnTypeInAutocomplete: 'right',
         diagnosticsEnabled: false
