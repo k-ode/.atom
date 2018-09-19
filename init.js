@@ -9,7 +9,7 @@ import {usePackage, configSet} from 'atom-use-package';
 configSet('core', {
     autoHideMenuBar: true,
     disabledPackages: ['background-tips', 'tabs'],
-    openEmptyEditorOnStart: false,
+    openEmptyEditorOnStart: true,
     restorePreviousWindowsOnStart: 'no',
     themes: ['city-lights-ui', 'city-lights-syntax']
 });
