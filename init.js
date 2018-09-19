@@ -185,7 +185,9 @@ atom.keymaps.add(__filename, {
 usePackage('last-cursor-position', {
     keymap: {
         'atom-workspace': {
-            'ctrl-u ctrl-space': 'last-cursor-position:previous'
+            'ctrl-u ctrl-space': 'last-cursor-position:previous',
+            'alt-,': 'last-cursor-position:previous',
+            'ctrl-space ctrl-space': 'last-cursor-position:push'
         }
     }
 });
