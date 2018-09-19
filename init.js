@@ -480,6 +480,8 @@ usePackage('file-watcher', {
     }
 });
 
+usePackage('atomic-management');
+
 // usePackage("docblockr", {
 //   enableKeys: true
 // });
