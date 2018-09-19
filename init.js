@@ -161,7 +161,6 @@ atom.keymaps.add(__filename, {
         'ctrl-c s s': 'project-find:toggle',
         'ctrl--': 'core:undo',
         'alt--': 'core:redo',
-        'ctrl-c p p': 'application:reopen-project',
         'ctrl-x i': 'symbols-view:toggle-file-symbols',
         'ctrl-c q': 'window:close-docks'
     },
@@ -478,6 +477,15 @@ usePackage('undo-tree');
 //     autoReload: true
 //   }
 // });
+usePackage('project-manager', {
+    keymap: {
+        'atom-workspace': {
+            'ctrl-c p e': 'edit-project',
+            'ctrl-c p s': 'save-project',
+            'ctrl-c p p': 'list-projects'
+        }
+    }
+});
 
 // usePackage("docblockr", {
 //   enableKeys: true
