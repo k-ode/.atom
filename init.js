@@ -22,6 +22,10 @@ configSet('editor', {
     scrollPastEnd: true
 });
 
+configSet('atom-package-deps', {
+    ignored: ['prettier-atom', 'linter-eslint', 'linter-jsonlint']
+});
+
 //
 //
 // General keybindings
