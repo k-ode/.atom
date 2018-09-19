@@ -474,11 +474,9 @@ usePackage('github', {
 
 usePackage('undo-tree');
 
-// usePackage("file-watcher", {
-//   config: {
-//     autoReload: true
-//   }
-// });
+usePackage('file-watcher', {
+    config: {
+        autoReload: true
     }
 });
 
