@@ -435,6 +435,9 @@ usePackage('fuzzy-finder', {
         'atom-workspace': {
             'ctrl-x f': 'toggle-file-finder'
         }
+    },
+    config: {
+        ignoredNames: ['node_modules', '.git']
     }
 });
 // usePackage("magic-reflow", {
