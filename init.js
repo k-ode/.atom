@@ -371,8 +371,18 @@ usePackage('advanced-open-file', {
     }
 });
 
-// Have to be manually installed for some reason.
 usePackage('selection-mode');
+
+usePackage('find-and-replace', {
+    keymap: {
+        'atom-text-editor:not([mini])': {
+            'ctrl-shift-down': 'select-next',
+            'ctrl-shift-up': 'select-undo',
+            'ctrl-shift-right': 'select-skip',
+            'alt-ä': 'select-all'
+        }
+    }
+});
 
 usePackage('incsearch', {
     keymap: {
