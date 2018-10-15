@@ -457,12 +457,13 @@ usePackage('autocomplete-plus', {
         }
     },
     config: {
-        autoActivationDelay: 1000,
+        autoActivationDelay: 0,
         backspaceTriggersAutocomplete: true,
-        enableAutoActivation: true,
+        enableAutoActivation: false,
         confirmCompletion: 'tab and enter',
         enableAutoConfirmSingleSuggestion: false,
-        enableExtendedUnicodeSupport: true
+        enableExtendedUnicodeSupport: true,
+        minimumWordLength: 0
     }
 });
 
