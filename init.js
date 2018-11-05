@@ -11,7 +11,8 @@ configSet('core', {
     disabledPackages: ['background-tips', 'tabs'],
     openEmptyEditorOnStart: true,
     restorePreviousWindowsOnStart: 'no',
-    themes: ['city-lights-ui', 'city-lights-syntax']
+    themes: ['one-dark-ui', 'one-dark-syntax'],
+    useTreeSitterParsers: true
 });
 
 configSet('editor', {
@@ -65,19 +66,14 @@ function insertText(text) {
 }
 
 atom.commands.add('atom-text-editor', 'custom:insert-left-par', insertText('('));
-
 atom.commands.add('atom-text-editor', 'custom:insert-right-par', insertText(')'));
-
 atom.commands.add('atom-text-editor', 'custom:insert-left-curly', insertText('{'));
-
 atom.commands.add('atom-text-editor', 'custom:insert-right-curly', insertText('}'));
-
 atom.commands.add('atom-text-editor', 'custom:insert-left-bracket', insertText('['));
-
 atom.commands.add('atom-text-editor', 'custom:insert-right-par', insertText(']'));
 
-const darkThemes = ['atom-dark-ui', 'atom-dark-syntax'];
-const lightThemes = ['atom-light-ui', 'atom-light-syntax'];
+const darkThemes = ['one-dark-ui', 'one-dark-syntax'];
+const lightThemes = ['one-light-ui', 'one-light-syntax'];
 
 atom.commands.add('atom-workspace', 'application:switch-to-light-theme', _e =>
     configSet('core', {
@@ -127,6 +123,8 @@ atom.commands.add('atom-workspace', 'window:close-docks', _e => {
 
 atom.keymaps.add(__filename, {
     'atom-workspace atom-text-editor:not([mini])': {
+        'alt-up': 'editor:move-line-up',
+        'alt-down': 'editor:move-line-down',
         "ctrl-alt-'": 'editor:split-selections-into-lines',
         'ctrl-a': 'editor:move-to-first-character-of-line',
         'ctrl-e': 'editor:move-to-end-of-line',
@@ -138,8 +136,6 @@ atom.keymaps.add(__filename, {
         'ctrl-right': 'editor:emacs-move-subword-right',
         'ctrl-backspace': 'editor:delete-to-beginning-of-subword',
         'ctrl-delete': 'editor:delete-to-end-of-subword',
-        'alt-up': 'editor:move-line-up',
-        'alt-down': 'editor:move-line-down',
         'ctrl-c c': 'editor:toggle-line-comments',
         'ctrl-5': 'custom:insert-left-par',
         'ctrl-6': 'custom:insert-right-par',
@@ -150,7 +146,7 @@ atom.keymaps.add(__filename, {
     },
     'atom-workspace': {
         'ctrl-x p p': 'application:reopen-project',
-        'ctrl-x p shift-p': 'application:open-folder',
+        // 'ctrl-x p shift-p': 'application:open-folder',
         'ctrl-x left': 'pane:split-left-and-copy-active-item',
         'ctrl-x right': 'pane:split-right-and-copy-active-item',
         'ctrl-x up': 'pane:split-up-and-copy-active-item',
@@ -167,10 +163,7 @@ atom.keymaps.add(__filename, {
         'ctrl-c q': 'window:close-docks'
     },
     'atom-workspace atom-text-editor.editor': {
-        'ctrl-space': 'selection-mode:toggle'
-    },
-    'atom-workspace atom-text-editor.editor.selection-mode': {
-        'ctrl-g': 'selection-mode:off'
+        'ctrl-space': 'text-select-mode:toggle'
     },
     '.tree-view': {
         enter: 'tree-view:expand-item',
@@ -182,6 +175,12 @@ atom.keymaps.add(__filename, {
 //
 //
 // Packages
+usePackage('spell-check', {
+    config: {
+        locales: ['sv-SE']
+    }
+});
+
 usePackage('last-cursor-position', {
     keymap: {
         'atom-workspace': {
@@ -373,14 +372,13 @@ usePackage('advanced-open-file', {
     }
 });
 
-usePackage('selection-mode');
+usePackage('text-select-mode');
 
 usePackage('find-and-replace', {
     keymap: {
         'atom-text-editor:not([mini])': {
-            'ctrl-shift-down': 'select-next',
-            'ctrl-shift-up': 'select-undo',
-            'ctrl-shift-right': 'select-skip',
+            'ctrl-alt-right': 'select-next',
+            'ctrl-alt-left-': 'select-undo',
             'alt-ä': 'select-all'
         }
     }
@@ -517,8 +515,6 @@ usePackage('file-watcher', {
     }
 });
 
-usePackage('atomic-management');
-
 // usePackage("docblockr", {
 //   enableKeys: true
 // });
@@ -625,8 +621,6 @@ usePackage('ide-typescript-theia', {
 //
 // JavaScript
 
-usePackage('language-babel');
-
 usePackage('linter-eslint', {
     config: {
         scopes: [
@@ -642,7 +636,7 @@ usePackage('linter-eslint', {
     }
 });
 
-const prettierFormatModes = ['source js jsx', 'source ts', 'source tsx'];
+const prettierFormatModes = ['source js', 'source js jsx', 'source ts', 'source tsx'];
 const prettierFormatModesKeymap = prettierFormatModes.reduce((result, mode) => {
     return {
         ...result,
