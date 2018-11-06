@@ -122,6 +122,10 @@ atom.commands.add('atom-workspace', 'window:close-docks', _e => {
 });
 
 atom.keymaps.add(__filename, {
+    '.platform-win32, .platform-linux': {
+        alt: 'abort!',
+        'alt-f1': 'window:toggle-menu-bar'
+    },
     'atom-workspace atom-text-editor:not([mini])': {
         'alt-up': 'editor:move-line-up',
         'alt-down': 'editor:move-line-down',
@@ -146,7 +150,6 @@ atom.keymaps.add(__filename, {
     },
     'atom-workspace': {
         'ctrl-x p p': 'application:reopen-project',
-        // 'ctrl-x p shift-p': 'application:open-folder',
         'ctrl-x left': 'pane:split-left-and-copy-active-item',
         'ctrl-x right': 'pane:split-right-and-copy-active-item',
         'ctrl-x up': 'pane:split-up-and-copy-active-item',
@@ -205,7 +208,6 @@ usePackage('file-icons');
 usePackage('emacs-plus', {
     keymap: {
         body: {
-            'alt-v': 'core:page-up',
             'alt-w': 'core:copy',
             'ctrl-d': 'core:delete',
             'ctrl-g': 'core:cancel',
@@ -213,7 +215,6 @@ usePackage('emacs-plus', {
             'ctrl-m': 'core:confirm',
             'ctrl-n': 'core:move-down',
             'ctrl-p': 'core:move-up',
-            'ctrl-v': 'core:page-down',
             'ctrl-w': 'core:cut'
         },
         'atom-workspace': {
@@ -223,20 +224,16 @@ usePackage('emacs-plus', {
             'ctrl-x 2': 'pane:split-down-and-copy-active-item',
             'ctrl-x 3': 'pane:split-right-and-copy-active-item',
             'ctrl-x b': 'fuzzy-finder:toggle-buffer-finder',
-            'ctrl-x ctrl-c': 'application:quit',
             'ctrl-x ctrl-f': 'advanced-open-file:toggle',
             'ctrl-x ctrl-j': 'tree-view:reveal-active-file',
             'ctrl-x k': 'core:close',
             'ctrl-x o': 'window:focus-next-pane'
         },
         'atom-workspace atom-text-editor': {
-            'ctrl-/': 'core:undo',
-            'ctrl-_': 'core:undo',
             'ctrl-a': 'editor:move-to-beginning-of-line',
             'ctrl-b': 'core:move-left',
             'ctrl-e': 'editor:move-to-end-of-screen-line',
             'ctrl-f': 'core:move-right',
-            'ctrl-g': 'editor:consolidate-selections',
             'ctrl-t': 'editor:transpose',
             'ctrl-y': 'core:paste',
             'alt-b': 'editor:move-to-beginning-of-word',
@@ -244,96 +241,31 @@ usePackage('emacs-plus', {
             'alt-right': 'editor:move-to-end-of-word',
             'ctrl-alt-/': 'core:redo',
             'ctrl-x ctrl-l': 'editor:lower-case',
-            'ctrl-x ctrl-u': 'editor:upper-case',
-            'ctrl-x u': 'core:undo'
+            'ctrl-x ctrl-u': 'editor:upper-case'
         },
         'atom-workspace atom-text-editor.emacs-plus:not([mini])': {
-            'alt-.': 'symbols-view:toggle-file-symbols',
-            'alt-/': 'autocomplete-plus:activate',
-            'alt-;': 'editor:toggle-line-comments',
-            'alt-<': 'core:move-to-top',
-            'alt->': 'core:move-to-bottom',
-            'alt-\\': 'emacs-plus:delete-horizontal-space',
-            'alt-^': 'emacs-plus:delete-indentation',
             'alt-backspace': 'emacs-plus:backward-kill-word',
             'alt-c': 'emacs-plus:capitalize-word',
             'alt-d': 'emacs-plus:kill-word',
-            'alt-delete': 'emacs-plus:backward-kill-word',
             'alt-g g': 'go-to-line:toggle',
-            'alt-left': 'editor:move-to-beginning-of-word',
-            'alt-m': 'editor:move-to-first-character-of-line',
             'alt-q': 'autoflow:reflow-selection',
-            'alt-space': 'emacs-plus:just-one-space',
             'alt-t': 'emacs-plus:transpose-words',
             'alt-w': 'emacs-plus:copy',
-            'alt-{': 'editor:move-to-beginning-of-previous-paragraph',
-            'alt-}': 'editor:move-to-beginning-of-next-paragraph',
-            'ctrl-alt-w': 'emacs-plus:append-next-kill',
-            'ctrl-i': 'editor:auto-indent',
             'ctrl-j': 'editor:newline',
             'ctrl-k': 'emacs-plus:kill-line',
-            'ctrl-l': 'emacs-plus:recenter-top-bottom',
-            'ctrl-m': 'editor:newline',
             'ctrl-o': 'emacs-plus:open-line',
-            'ctrl-r': 'find-and-replace:show',
-            'ctrl-s': 'find-and-replace:show',
             'ctrl-shift-backspace': 'emacs-plus:kill-whole-line',
-            // 'ctrl-space': 'emacs-plus:set-mark',
             'ctrl-w': 'emacs-plus:kill-region',
             'ctrl-x ctrl-s': 'core:save',
             'ctrl-x ctrl-t': 'emacs-plus:transpose-lines',
-            // 'ctrl-x ctrl-x': 'emacs-plus:exchange-point-and-mark',
             'ctrl-x h': 'core:select-all'
-        },
-        'atom-workspace atom-text-editor.emacs-plus.mark-mode:not([mini])': {
-            'alt-<': 'core:select-to-top',
-            'alt->': 'core:select-to-bottom',
-            'alt-b': 'editor:select-to-beginning-of-word',
-            'alt-f': 'editor:select-to-end-of-word',
-            'alt-left': 'editor:select-to-beginning-of-word',
-            'alt-right': 'editor:select-to-end-of-word',
-            'alt-v': 'core:select-page-up',
-            'alt-{': 'editor:select-to-beginning-of-previous-paragraph',
-            'alt-}': 'editor:select-to-beginning-of-next-paragraph',
-            'ctrl-a': 'editor:select-to-beginning-of-line',
-            'ctrl-b': 'core:select-left',
-            'ctrl-e': 'editor:select-to-end-of-line',
-            'ctrl-f': 'core:select-right',
-            'ctrl-g': 'core:cancel',
-            'ctrl-n': 'core:select-down',
-            'ctrl-p': 'core:select-up',
-            'ctrl-v': 'core:select-page-down',
-            down: 'core:select-down',
-            left: 'core:select-left',
-            right: 'core:select-right',
-            up: 'core:select-up'
-        },
-        '.find-and-replace': {
-            'ctrl-r': 'find-and-replace:find-previous',
-            'ctrl-s': 'find-and-replace:find-next'
         },
         'atom-workspace atom-text-editor:not(mini).emacs-plus.autocomplete-active': {
             'ctrl-g': 'autocomplete-plus:cancel',
-            'ctrl-m': 'autocomplete-plus:confirm',
             enter: 'autocomplete-plus:confirm'
         },
         '.tree-view': {
-            '^': 'tree-view:collapse-directory',
-            'ctrl-m': 'tree-view:open-selected-entry',
-            n: 'core:move-down',
-            p: 'core:move-up',
-            q: 'tree-view:toggle',
-            'shift-c': 'tree-view:duplicate',
-            'shift-d': 'tree-view:remove',
-            'shift-e': 'tree-view:recursive-expand-directory',
-            'shift-r': 'tree-view:rename'
-        },
-        '.advanced-open-file atom-text-editor': {
-            'ctrl-i': 'advanced-open-file:autocomplete',
-            'ctrl-p': 'advanced-open-file:move-cursor-up',
-            'ctrl-n': 'advanced-open-file:move-cursor-down',
-            'ctrl-w': 'advanced-open-file:delete-path-component',
-            'ctrl-/': 'advanced-open-file:undo'
+            q: 'tree-view:toggle'
         }
     }
 });
@@ -362,12 +294,9 @@ usePackage('advanced-open-file', {
             down: 'advanced-open-file:move-cursor-down',
             left: 'advanced-open-file:delete-path-component',
             right: 'advanced-open-file:autocomplete',
-            tab: 'advanced-open-file:autocomplete',
-            'ctrl-i': 'advanced-open-file:autocomplete',
-            'ctrl-p': 'advanced-open-file:move-cursor-up',
-            'ctrl-n': 'advanced-open-file:move-cursor-down',
-            'ctrl-w': 'advanced-open-file:delete-path-component',
-            'ctrl-/': 'advanced-open-file:undo'
+            'ctrl-j': 'advanced-open-file:autocomplete',
+            'ctrl-l': 'advanced-open-file:delete-path-component',
+            tab: 'advanced-open-file:autocomplete'
         }
     }
 });
@@ -429,7 +358,6 @@ usePackage('keybinding-resolver', {
         }
     }
 });
-
 usePackage('fuzzy-finder', {
     keymap: {
         'atom-workspace': {
@@ -440,13 +368,6 @@ usePackage('fuzzy-finder', {
         ignoredNames: ['node_modules', '.git']
     }
 });
-// usePackage("magic-reflow", {
-//   keymap: {
-//     "atom-workspace atom-text-editor.emacs-plus:not([mini])": {
-//       "alt-q": "reflow"
-//     }
-//   }
-// });
 
 usePackage('autocomplete-plus', {
     keymap: {
@@ -461,7 +382,8 @@ usePackage('autocomplete-plus', {
         confirmCompletion: 'tab and enter',
         enableAutoConfirmSingleSuggestion: false,
         enableExtendedUnicodeSupport: true,
-        minimumWordLength: 0
+        minimumWordLength: 0,
+        useAlternateScoring: true
     }
 });
 
@@ -492,21 +414,6 @@ usePackage('git-rebase', {
     enableKeys: true
 });
 
-// usePackage("jumpy", {
-//   keymap: {
-//     "atom-text-editor:not([mini])": {
-//       "ctrl-;": "toggle"
-//     },
-//     "atom-text-editor.jumpy-jump-mode:not([mini])": {
-//       backspace: "reset",
-//       "ctrl-g": "clear"
-//     }
-//   }
-// });
-
-// usePackage("trailing-spaces");
-// usePackage("spaces-in-braces");
-
 usePackage('undo-tree');
 
 usePackage('file-watcher', {
@@ -515,9 +422,7 @@ usePackage('file-watcher', {
     }
 });
 
-// usePackage("docblockr", {
-//   enableKeys: true
-// });
+usePackage('ide-csharp');
 
 //
 //
@@ -560,8 +465,8 @@ usePackage('file-watcher', {
 usePackage('atom-ide-ui', {
     keymap: {
         'atom-workspace atom-text-editor.emacs-plus:not([mini])': {
-            'ctrl-c t': 'signature-help:show',
-            'ctrl-c ctrl-t': 'datatip:toggle',
+            'ctrl-c ctrl-t': 'signature-help:show',
+            'ctrl-c t': 'datatip:toggle',
             'alt-.': 'hyperclick:confirm-cursor'
             // "alt-n": "diagnostics:go-to-next-diagnostic",
             // "alt-p": "diagnostics:go-to-previous-diagnostic",
@@ -578,27 +483,8 @@ usePackage('atom-ide-ui', {
         'atom-ide-find-references': {
             defaultLocationForPane: 'right'
         },
-        'atom-ide-terminal': {
-            preservedCommands: [
-                'command-palette:toggle',
-                'fb-interactive-smartlog:toggle',
-                'nuclide-quick-open:find-anything',
-                'atom-ide-terminal:add-escape-prefix',
-                'atom-ide-terminal:new-terminal',
-                'atom-ide-terminal:toggle-terminal-focus',
-                'pane:move-active-item-to-top-of-stack',
-                'pane:show-next-recently-used-item',
-                'window:focus-next-pane',
-                'window:focus-previous-pane',
-                'window:focus-pane-above',
-                'window:focus-pane-below',
-                'window:focus-pane-on-left',
-                'window:focus-pane-on-right',
-                'pane:split-down-and-copy-active-item',
-                'pane:split-left-and-copy-active-item',
-                'pane:split-right-and-copy-active-item',
-                'pane:split-up-and-copy-active-item'
-            ]
+        use: {
+            'atom-ide-terminal': 'never'
         }
     }
 });
@@ -629,9 +515,7 @@ usePackage('linter-eslint', {
             'source.jsx',
             'source.js.jsx',
             'source.babel',
-            'source.js-semantic',
-            'source.ts',
-            'source.tsx'
+            'source.js-semantic'
         ]
     }
 });
