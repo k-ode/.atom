@@ -262,7 +262,8 @@ usePackage('emacs-plus', {
         },
         'atom-workspace atom-text-editor:not(mini).emacs-plus.autocomplete-active': {
             'ctrl-g': 'autocomplete-plus:cancel',
-            enter: 'autocomplete-plus:confirm'
+            enter: 'autocomplete-plus:confirm',
+            f1: 'autocomplete-plus:navigate-to-description-more-link'
         },
         '.tree-view': {
             q: 'tree-view:toggle'
@@ -467,12 +468,12 @@ usePackage('atom-ide-ui', {
         'atom-workspace atom-text-editor.emacs-plus:not([mini])': {
             'ctrl-c ctrl-t': 'signature-help:show',
             'ctrl-c t': 'datatip:toggle',
-            'alt-.': 'hyperclick:confirm-cursor'
+            'alt-.': 'hyperclick:confirm-cursor',
+            'ctrl-c r': 'find-references:activate'
             // "alt-n": "diagnostics:go-to-next-diagnostic",
             // "alt-p": "diagnostics:go-to-previous-diagnostic",
             // "ctrl-c s": "diagnostics:show-actions-at-position",
             // "ctrl-c alt-s": "diagnostics:fix-all-in-current-file",
-            // "ctrl-c r": "find-references:activate",
         },
         'atom-workspace': {
             'ctrl-x ctrl-i': 'outline-view:toggle',
