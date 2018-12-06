@@ -1,0 +1,15 @@
+{
+  "name": "text-select-mode",
+  "main": "./lib/text-select-mode",
+  "version": "0.7.0",
+  "description": "Selectively turns move commands into select commands",
+  "activationCommands": {
+    "atom-text-editor": "text-select-mode:toggle"
+  },
+  "repository": "https://github.com/ldgonza/text-select-mode",
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.5.0"
+  },
+  "dependencies": {}
+}
