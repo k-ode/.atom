@@ -7,3 +7,18 @@ div.terminal {
 .diagnostics-popup {
     overflow-y: auto;
 }
+
+atom-text-editor:not(.mini).is-focused .cursor {
+    border: 1px solid white;
+    background: white;
+    opacity: 1 !important;
+}
+
+atom-workspace.theme-one-light-ui atom-text-editor:not(.mini).is-focused .cursor {
+    border-color: lightblue;
+    background: lightblue;
+}
+
+atom-text-editor:not(.mini) .cursors {
+    mix-blend-mode: difference;
+}
