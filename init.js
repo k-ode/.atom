@@ -413,42 +413,6 @@ usePackage('file-watcher', {
 
 usePackage('ide-csharp');
 
-//
-//
-// Build
-
-// usePackage("build", {
-//   config: {
-//     panelVisibility: "Keep Visible",
-//     refreshOnShowTargetList: true,
-//     buildOnSave: false,
-//     saveOnBuild: true,
-//     scrollOnError: true,
-//     stealFocus: false
-//   },
-//   keymap: {
-//     "atom-workspace": {
-//       "ctrl-c b c": "select-active-target",
-//       "ctrl-c b b": "toggle-panel",
-//       "ctrl-c ctrl-s": "trigger"
-//     }
-//   }
-// });
-
-// usePackage("build-tools", {
-//   keymap: {
-//     "atom-workspace": {
-//       "ctrl-c p shift-p": "first-command-ask",
-//       "ctrl-c ctrl-s": "first-command",
-//       "ctrl-c p c": "commands",
-//       "ctrl-c p p": "toggle",
-//       "ctrl-l ctrl-s": "unset!"
-//     }
-//   }
-// });
-
-//
-//
 // Atom IDE
 
 usePackage('atom-ide-ui', {
@@ -477,15 +441,8 @@ usePackage('atom-ide-ui', {
         }
     }
 });
-//
-// usePackage('ide-typescript', {
-//     config: {
-//         returnTypeInAutocomplete: 'right',
-//         diagnosticsEnabled: true
-//     }
-// });
 
-usePackage('ide-typescript-theia', {
+usePackage('ide-typescript', {
     config: {
         returnTypeInAutocomplete: 'right',
         diagnosticsEnabled: false
