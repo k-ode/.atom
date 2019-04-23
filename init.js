@@ -311,6 +311,9 @@ usePackage('find-and-replace', {
             'ctrl-alt-left-': 'select-undo',
             'alt-ä': 'select-all'
         }
+    },
+    config: {
+        projectSearchResultsPaneSplitDirection: 'right'
     }
 });
 
@@ -392,21 +395,6 @@ usePackage('github', {
     keymap: {
         'atom-workspace': {
             'ctrl-x g': 'github:toggle-git-tab'
-        }
-    }
-});
-
-usePackage('git-plus', {
-    config: {
-        general: {
-            alwaysOpenDockWithResult: true,
-            splitPane: 'Right'
-        }
-    },
-    keymap: {
-        'atom-workspace': {
-            'ctrl-c g': 'git-plus:menu',
-            'ctrl-c ctrl-g': 'git-plus:run'
         }
     }
 });
@@ -552,3 +540,5 @@ usePackage('language-cshtml');
 // Misc languages
 
 usePackage('linter-jsonlint');
+
+usePackage('pigments');
